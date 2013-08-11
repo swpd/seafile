@@ -40,7 +40,9 @@ proc_headers = $(addprefix processors/, \
 	getcommit-v2-proc.h \
 	sendcommit-v2-proc.h \
 	sendcommit-v3-proc.h \
-	getrepoemailtoken-proc.h )
+	getrepoemailtoken-proc.h \
+	getcs-v2-proc.h \
+	checkbl-proc.h)
 
 proc_headers += ../common/processors/objecttx-common.h \
 				../common/processors/blocktx-common.h \
@@ -58,6 +60,7 @@ noinst_HEADERS = \
 	gc.h \
 	wt-monitor-common.h \
 	../common/sync-repo-common.h \
+	block-tx-client.h \
 	$(proc_headers)
 
 if LINUX
@@ -92,6 +95,8 @@ common_src = \
 	../common/block-backend.c \
 	../common/block-backend-fs.c \
 	../common/mq-mgr.c \
+	block-tx-client.c \
+	../common/block-tx-utils.c \
 	processors/check-tx-proc.c \
 	processors/check-tx-v2-proc.c \
 	processors/check-tx-v3-proc.c \
@@ -115,7 +120,9 @@ common_src = \
 	processors/getcommit-v2-proc.c \
 	processors/sendcommit-v2-proc.c \
 	processors/sendcommit-v3-proc.c \
-	processors/getrepoemailtoken-proc.c
+	processors/getrepoemailtoken-proc.c \
+	processors/getcs-v2-proc.c \
+	processors/checkbl-proc.c
 
 
 seaf_daemon_SOURCES = seaf-daemon.c $(common_src)
